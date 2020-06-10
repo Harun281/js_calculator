@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="screen">
+            <div data-previous></div>
+            <div data-current></div>
+        </div>
+        
+            <!--Operators-->
+            <button id="clear" data-clear>C</button>
+            <button id="root" disabled data-operation>&radic;</button>
+            <button id="square" disabled data-operation>X<sup>2</sup></button>
+            <button id="divide" data-operation>/</button>
+            <button id="multiply" data-operation>*</button>
+            <button id="sub" data-operation>-</button>
+            <button id="sum" data-operation>+</button>
+            <button id="calculate" data-calculate>=</button>
+            <button id="cancel" data-del>&lt;=</button>
+            <!--Numbers-->
+            <button id="seven" value="7"  data-number>7</button>
+            <button id="eight" value="8"  data-number>8</button>
+            <button id="nine" value="9"  data-number>9</button>
+            <button id="four" value="4"  data-number>4</button>
+            <button id="five" value="5"  data-number>5</button>
+            <button id="six" value="6"  data-number>6</button>
+            <button id="one" value="1"  data-number>1</button>
+            <button id="two" value="2"  data-number>2</button>
+            <button id="three" value="3" data-number>3</button>
+            
+            
+            
+            
+            
+            
+            <button id="decimal" data-number>.</button>
+            <button id="zero" value="0"  data-number>0</button>
+        </div>      
+    <script src="calculator.js" defer></script>
+</body>
+</html>
