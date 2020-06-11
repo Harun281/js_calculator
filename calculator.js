@@ -4,16 +4,19 @@ class myCalculator {
      constructor(prevOperandText,currentOperandText){
           this.prevOperandText = prevOperandText;
           this.currentOperandText = currentOperandText;
+          this.readyToReset = false;
           this.clear();
      }
      clear(){
           this.prevOperand = '';
           this.currentOperand = '';
           this.operation = undefined;
+          this.readyToReset = false;
      }
 
      delete(){
           this.currentOperand = this.currentOperand.toString().slice(0,-1);
+          this.readyToReset = false;
      }
 
      append(num){
@@ -58,8 +61,32 @@ class myCalculator {
           this.currentOperand = result;
           this.prevOperand = '';
           this.operation = undefined;
+          this.readyToReset = true;
 
      }
+
+     specialComputation(name){
+          let result;
+          const current = parseFloat(this.currentOperand);
+          if (isNaN(current))return;
+          if(this.operation !== undefined)return;
+          switch(name){
+               case 'root':
+                    result = Math.sqrt(current);
+                    break;
+               case 'square':
+                    result = Math.pow(current,2);
+                    break;
+               default:
+                    return;
+          }
+          this.currentOperand = result;
+          this.prevOperand = '';
+          this.readyToReset = true;
+
+     }
+
+
      getDisplay(number){
           const stringNumber = number.toString();
           const integerDigits = parseFloat(stringNumber.split('.')[0]);
@@ -96,6 +123,7 @@ const del = document.querySelector('[data-del]');
 const number = document.querySelectorAll('[data-number]');
 const prevOperandText = document.querySelector('[data-previous]');
 const currentOperandText = document.querySelector('[data-current]');
+const specialOperation = document.querySelectorAll('[data-special-operation]');
 
 const calculator = new myCalculator(prevOperandText,currentOperandText);
 
@@ -103,6 +131,10 @@ const calculator = new myCalculator(prevOperandText,currentOperandText);
 
 number.forEach(button => {
      button.addEventListener('click',() => {
+          if(calculator.prevOperand === '' && calculator.currentOperand !== '' && calculator.readyToReset){
+               calculator.currentOperand = '';
+               calculator.readyToReset = false;
+          }
           calculator.append(button.innerText);
           calculator.updateDisplay();
      });
@@ -111,6 +143,14 @@ number.forEach(button => {
 operation.forEach(button => {
      button.addEventListener('click',() => {
           calculator.chooseOperation(button.innerText);
+          calculator.updateDisplay();
+     });
+});
+
+
+specialOperation.forEach(button => {
+     button.addEventListener('click',() => {
+          calculator.specialComputation(button.getAttribute('name'));
           calculator.updateDisplay();
      });
 });

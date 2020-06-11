@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <!--?<script>Math.random()</script>-->
+    
+    
 </head>
 <body>
     <div class="container">
+        <div id="name">Js Calculator</div>
         <div id="screen">
-            <div data-previous></div>
+            <div style="font-weight: lighter;" data-previous></div>
             <div data-current></div>
         </div>
         
             <!--Operators-->
             <button id="clear" data-clear>C</button>
-            <button id="root" disabled data-operation>&radic;</button>
-            <button id="square" disabled data-operation>X<sup>2</sup></button>
+            <button id="root" name="root" data-special-operation>&radic;</button>
+            <button id="square" name="square" data-special-operation>X<sup>2</sup></button>
             <button id="divide" data-operation>/</button>
             <button id="multiply" data-operation>*</button>
             <button id="sub" data-operation>-</button>
@@ -39,7 +43,7 @@
             
             
             
-            <button id="decimal" data-number>.</button>
+            <button id="decimal" style="font-size: 2em;" data-number>.</button>
             <button id="zero" value="0"  data-number>0</button>
         </div>      
     <script src="calculator.js" defer></script>
