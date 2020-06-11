@@ -96,7 +96,7 @@ button:focus{
     .container{
         grid-template-columns: repeat(4,100px);
         grid-template-rows: 30px 160px repeat(5,100px);
-        margin: 40px 0px 0px 100px;
+        margin: 40px 0px 0px 25%;
     }
     #screen{
         padding: 20px 20px 20px 20px;
